@@ -11,3 +11,4 @@ crate-type = ["cdylib"]
 [dependencies]
 pyo3 = { version = "0.16.3", features = ["extension-module"] }
 pulldown-cmark = { version = "0.9.1" }
+lazy_static = { version = "1.4.0" }
