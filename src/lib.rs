@@ -59,7 +59,7 @@ impl Markdown {
     }
 
     // Convert Markdown file to HTML.
-    fn convert_from_file(&self, filename: &str) -> PyResult<String> {
+    fn convert_file(&self, filename: &str) -> PyResult<String> {
         let content = fs::read_to_string(filename)?;
 
         self.convert(&content)
@@ -92,7 +92,7 @@ fn convert(text: &str) -> PyResult<String> {
 
 // Convert Markdown file to HTML(without plugin).
 #[pyfunction]
-fn convert_from_file(filename: &str) -> PyResult<String> {
+fn convert_file(filename: &str) -> PyResult<String> {
     let content = fs::read_to_string(filename)?;
 
     convert(&content)
@@ -102,7 +102,7 @@ fn convert_from_file(filename: &str) -> PyResult<String> {
 #[pymodule]
 fn fugue(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(convert, m)?)?;
-    m.add_function(wrap_pyfunction!(convert_from_file, m)?)?;
+    m.add_function(wrap_pyfunction!(convert_file, m)?)?;
     m.add_function(wrap_pyfunction!(create_markdown, m)?)?;
     m.add_class::<Markdown>()?;
     Ok(())

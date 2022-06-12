@@ -1,7 +1,7 @@
 from unittest import TestCase
 import tempfile
 
-from fugue import convert, convert_from_file, create_markdown, Markdown
+from fugue import convert, convert_file, create_markdown, Markdown
 
 
 class ConvertTests(TestCase):
@@ -89,9 +89,8 @@ Go to <a href="https://www.google.com">Google</a>.</p>
             convert(self.text)
         )
 
-    def test_convert_from_file(self) -> None:
+    def test_convert_file(self) -> None:
         """
-        test convert markdown file to html.
         write something into temp file, by `tempfile` standard library .
         """
         with tempfile.NamedTemporaryFile("w") as file:
@@ -99,7 +98,7 @@ Go to <a href="https://www.google.com">Google</a>.</p>
             file.seek(0)
             self.assertEqual(
                 self.html,
-                convert_from_file(file.name)
+                convert_file(file.name)
             )
 
     def test_convert_by_class(self) -> None:
@@ -109,12 +108,12 @@ Go to <a href="https://www.google.com">Google</a>.</p>
             markdown.convert(self.text)
         )
 
-    def test_convert_from_file_by_class(self) -> None:
+    def test_convert_file_by_class(self) -> None:
         markdown = Markdown()
         with tempfile.NamedTemporaryFile("w") as file:
             file.write(self.text)
             file.seek(0)
             self.assertEqual(
                 self.html,
-                markdown.convert_from_file(file.name)
+                markdown.convert_file(file.name)
             )
