@@ -27,7 +27,7 @@ struct Markdown {
 impl Markdown {
     // Generate `Markdown` with any plugins or without plugin.
     #[new]
-    fn new(plugins: Option<Vec<&str>>) -> Self {
+    fn new(plugins: Option<Vec<&str>>) -> PyResult<Self> {
         if let Some(plugins) = plugins {
             let mut options = Options::empty();
 
@@ -38,13 +38,13 @@ impl Markdown {
                 }
             }
 
-            return Self {
+            return Ok(Self {
                 options: options
-            }
+            })
         } else {
-            return Self {
+            return Ok(Self {
                 options: Options::empty()
-            }
+            })
         }
     }
 
@@ -75,7 +75,7 @@ impl Markdown {
 fn create_markdown(plugins: Option<Vec<&str>>) -> PyResult<Markdown> {
     let markdown = Markdown::new(plugins);
 
-    Ok(markdown)
+    markdown
 }
 
 
