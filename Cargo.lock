@@ -21,15 +21,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
-name = "fugue"
-version = "0.1.0"
-dependencies = [
- "lazy_static",
- "pulldown-cmark",
- "pyo3",
-]
-
-[[package]]
 name = "getopts"
 version = "0.2.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -71,6 +62,15 @@ name = "memchr"
 version = "2.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
+
+[[package]]
+name = "mezzo"
+version = "0.1.0"
+dependencies = [
+ "lazy_static",
+ "pulldown-cmark",
+ "pyo3",
+]
 
 [[package]]
 name = "once_cell"

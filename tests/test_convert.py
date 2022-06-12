@@ -1,7 +1,7 @@
 from unittest import TestCase
 import tempfile
 
-from fugue import convert, convert_file, create_markdown, Markdown
+from mezzo import convert, convert_file, create_markdown, Markdown
 
 
 class ConvertTests(TestCase):
