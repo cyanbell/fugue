@@ -1,10 +1,10 @@
 from unittest import TestCase
 import tempfile
 
-from fugue import convert, convert_from_file
+from fugue import convert, convert_from_file, create_markdown, Markdown
 
 
-class ConvertTestCase(TestCase):
+class ConvertTests(TestCase):
     def setUp(self) -> None:
         self.text = """# Title
 
@@ -100,4 +100,21 @@ Go to <a href="https://www.google.com">Google</a>.</p>
             self.assertEqual(
                 self.html,
                 convert_from_file(file.name)
+            )
+
+    def test_convert_by_class(self) -> None:
+        markdown = create_markdown()
+        self.assertEqual(
+            self.html,
+            markdown.convert(self.text)
+        )
+
+    def test_convert_from_file_by_class(self) -> None:
+        markdown = Markdown()
+        with tempfile.NamedTemporaryFile("w") as file:
+            file.write(self.text)
+            file.seek(0)
+            self.assertEqual(
+                self.html,
+                markdown.convert_from_file(file.name)
             )
