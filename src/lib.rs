@@ -100,7 +100,7 @@ fn convert_file(filename: &str) -> PyResult<String> {
 
 /// A Python module implemented in Rust.
 #[pymodule]
-fn mezzo(_py: Python, m: &PyModule) -> PyResult<()> {
+fn micoda(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(convert, m)?)?;
     m.add_function(wrap_pyfunction!(convert_file, m)?)?;
     m.add_function(wrap_pyfunction!(create_markdown, m)?)?;

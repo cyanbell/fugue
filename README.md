@@ -1,11 +1,11 @@
-# Mezzo
+# Micoda
 
 A Python module to parse Markdown. Powered by `PyO3` and `pulldown-cmark`.
 
 ## Install
 
 ```bash
-pip install mezzo
+pip install micoda
 ```
 
 ## Usage
@@ -13,15 +13,15 @@ pip install mezzo
 Convert Markdown to HTML:
 
 ```python
-import mezzo
+import micoda
 
-mezzo.convert(your_markdown_text)
+micoda.convert(your_markdown_text)
 ```
 
 Convert Markdown file to HTML:
 
 ```python
-import mezzo
+import micoda
 
-mezzo.convert_file(your_markdown_file_path)
+micoda.convert_file(your_markdown_file_path)
 ```
